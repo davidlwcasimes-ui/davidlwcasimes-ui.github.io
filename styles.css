@@ -1,15 +1,16 @@
 /* David L.W. Casimes — portfolio
-   Direction: quiet editorial. Warm paper ground, ink text, one deep blue accent.
+   Direction: quiet editorial. Cool white ground, ink text, transit-line colors on the DLWC bullets, one signal-red accent.
    Display: Newsreader (serif, optical sizes). Body: Hanken Grotesk. */
 
 :root{
-  --paper:#f7f6f3;
-  --paper-2:#efede8;
-  --ink:#16171a;
-  --ink-2:#4a4c52;
-  --ink-3:#8a8b90;
-  --rule:#dcd9d2;
-  --accent:#1e3a5f;
+  --paper:#fbfbfa;
+  --paper-2:#eef0f2;
+  --ink:#101419;
+  --ink-2:#454c55;
+  --ink-3:#7f8790;
+  --rule:#dfe2e6;
+  --accent:#d1452f;
+  --line-d:#d1452f; --line-l:#1f8a5b; --line-w:#2f6fd0; --line-c:#e8a913;
   --display:"Newsreader", "Iowan Old Style", Georgia, serif;
   --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
   --max:1180px;
@@ -17,8 +18,8 @@
 }
 @media (prefers-color-scheme:dark){
   :root{
-    --paper:#121315; --paper-2:#1b1c1f; --ink:#ecebe6; --ink-2:#b5b5b0; --ink-3:#7d7e80;
-    --rule:#2b2c30; --accent:#9db8dc; color-scheme:dark;
+    --paper:#0f1216; --paper-2:#191d23; --ink:#eef0f2; --ink-2:#b3b9c0; --ink-3:#79818a;
+    --rule:#262b32; --accent:#f07a62; color-scheme:dark;
   }
 }
 
@@ -35,11 +36,12 @@ a:hover{color:var(--accent)}
 .masthead{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 0;border-bottom:1px solid var(--rule)}
 .mark{display:flex;align-items:center;gap:12px;text-decoration:none;font:500 15px/1 var(--body);letter-spacing:.02em}
 .bullets{display:flex;gap:3px}
-.bullets i{width:18px;height:18px;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;font:600 9px/1 var(--body);font-style:normal}
+.bullets i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:600 10px/1 var(--body);font-style:normal;color:#fff;background:var(--line-d)}
+.bullets i:nth-child(2){background:var(--line-l)}.bullets i:nth-child(3){background:var(--line-w)}.bullets i:nth-child(4){background:var(--line-c);color:#101419}
 nav{display:flex;gap:26px;font-size:14px}
 nav a{text-decoration:none;color:var(--ink-2)}
 nav a[aria-current="page"]{color:var(--ink)}
-nav a[aria-current="page"]::after{content:"";display:block;height:1px;background:var(--ink);margin-top:4px}
+nav a[aria-current="page"]::after{content:"";display:block;height:2px;background:var(--accent);margin-top:4px}
 
 /* type */
 .eyebrow{font:400 italic 17px/1.3 var(--display);color:var(--ink-3);margin:0 0 18px}
@@ -63,9 +65,11 @@ p{max-width:66ch}
 
 /* sections */
 section{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--rule)}
-.sec-head{display:grid;grid-template-columns:200px 1fr;gap:24px;margin-bottom:clamp(32px,5vw,56px);align-items:baseline}
-.sec-head .eyebrow{margin:0}
-.sec-head p{color:var(--ink-2);margin:14px 0 0}
+.sec-head{display:grid;grid-template-columns:minmax(200px,320px) 1fr;gap:24px 40px;margin-bottom:clamp(32px,5vw,56px);align-items:baseline}
+.sec-head p{color:var(--ink-2);margin:0;font-size:18px}
+.sec-head p+p{margin-top:12px}
+.quote h2,.contact h2{font-size:clamp(30px,3.6vw,44px)}
+.cta{font:300 italic clamp(24px,2.8vw,34px)/1.25 var(--display);margin:0;max-width:24ch}
 
 /* work list */
 .work{list-style:none;margin:0;padding:0}
@@ -104,11 +108,11 @@ section{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--rule)}
 .gallery figcaption span{color:var(--ink-3);white-space:nowrap}
 .gallery figcaption p{flex-basis:100%;margin:4px 0 0;color:var(--ink-2);font-size:14px}
 .gallery figcaption{flex-wrap:wrap}
-.more{display:inline-flex;align-items:center;gap:10px;margin-top:40px;font-size:15px;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.more{display:inline-flex;align-items:center;gap:10px;margin-top:40px;font-size:15px;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:4px}
 .more::after{content:"→"}
 
 /* recognition */
-.quote{margin:0;display:grid;grid-template-columns:200px 1fr;gap:24px}
+.quote{margin:0;display:grid;grid-template-columns:minmax(200px,320px) 1fr;gap:24px 40px}
 .quote blockquote{margin:0;font:300 italic clamp(28px,3.4vw,42px)/1.25 var(--display);max-width:26ch}
 .quote cite{display:block;margin-top:20px;font:400 14px/1.4 var(--body);font-style:normal;color:var(--ink-3)}
 
@@ -127,8 +131,7 @@ section{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--rule)}
 .timeline .prior{font-size:14px;color:var(--ink-3);margin:8px 0 0}
 
 /* contact */
-.contact{display:grid;grid-template-columns:200px 1fr;gap:24px}
-.contact h2{max-width:20ch}
+.contact{display:grid;grid-template-columns:minmax(200px,320px) 1fr;gap:24px 40px}
 .links{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:32px;font-size:16px}
 .links span{display:block;font:400 italic 15px/1.3 var(--display);color:var(--ink-3);margin-bottom:4px}
 
@@ -142,16 +145,43 @@ dialog.lb p{color:#ecebe6;text-align:center;font-size:14px;margin:14px auto 0}
 dialog.lb button{position:fixed;top:18px;right:22px;background:none;border:1px solid rgba(255,255,255,.5);color:#fff;font:500 13px var(--body);padding:8px 14px;cursor:pointer}
 
 @media (max-width:860px){
-  .hero{grid-template-columns:1fr}
   .sec-head,.work li,.timeline>li,.quote,.contact{grid-template-columns:1fr;gap:10px}
-  .work .tag{text-align:left}
+  .sec-head p{font-size:17px}
+  .work .tag{text-align:left;padding-top:0}
+  .work li{padding:24px 0}
   .videos{grid-template-columns:1fr}
   .gallery figure,.gallery figure.wide{grid-column:span 6}
   nav{gap:18px}
 }
-@media (max-width:520px){
+@media (max-width:600px){
+  body{font-size:16px}
+  .masthead{flex-direction:column;align-items:flex-start;gap:16px;padding:20px 0 0;border-bottom:0}
+  nav{width:100%;gap:0;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:14px}
+  nav::-webkit-scrollbar{display:none}
+  nav a{flex:none;padding:13px 18px 11px 0;white-space:nowrap}
+  nav a[aria-current="page"]::after{margin-top:3px}
+  .hero{padding:48px 0 40px}
+  .hero h1{font-size:clamp(42px,12.5vw,64px);line-height:1.02}
+  .hero .lede{margin-top:22px;font-size:19px}
+  h2{font-size:32px}
+  section{padding:48px 0}
+  .gallery{gap:20px}
   .gallery figure,.gallery figure.wide{grid-column:span 12}
-  .masthead{flex-direction:column;align-items:flex-start}
+  .gallery figcaption{font-size:13px}
+  .video .vt{font-size:19px}
+  .video figcaption{grid-template-columns:1fr}
+  .video .vm{text-align:left}
+  .yt .play{left:14px;bottom:14px}
+  .yt .play::before{width:40px;height:40px;background-size:18px}
+  .quote blockquote{font-size:26px}
+  .cta{font-size:24px}
+  .links{flex-direction:column;gap:20px}
+  .kit{grid-template-columns:1fr 1fr;gap:24px}
+  .phone{height:580px;border-width:8px;border-radius:38px}
+  .feedside .note{min-height:0}
+  .facts b{font-size:28px}
+  footer.site{flex-direction:column;gap:6px}
+  dialog.lb button{top:12px;right:12px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.yt img{transition:none}}
 
@@ -164,7 +194,7 @@ dialog.lb button{position:fixed;top:18px;right:22px;background:none;border:1px s
 .scroller::-webkit-scrollbar{display:none}
 .post{background:#fff;color:#111;border-bottom:1px solid #efefef;padding-bottom:14px}
 .post header{display:flex;align-items:center;gap:10px;padding:10px 12px}
-.av{width:32px;height:32px;border-radius:50%;background:#1e3a5f;color:#fff;display:grid;place-items:center;font:600 11px/1 var(--body);flex:none}
+.av{width:32px;height:32px;border-radius:50%;background:#101419;color:#fff;display:grid;place-items:center;font:600 11px/1 var(--body);flex:none}
 .post header b{display:block;font:600 13px/1.2 var(--body)}
 .post header small{display:block;font-size:11px;color:#777}
 .post header .dots{margin-left:auto;color:#999;letter-spacing:2px}
@@ -186,3 +216,4 @@ dialog.lb button{position:fixed;top:18px;right:22px;background:none;border:1px s
 .hint{font-size:14px;color:var(--ink-3);margin:14px 0 0}
 @media (prefers-color-scheme:dark){.phone{border-color:#2b2c30}}
 @media (max-width:860px){.feedwrap{grid-template-columns:1fr}.phone{position:static;margin:0 auto;height:640px}}
+@media (max-width:600px){.phone{height:580px}}
