@@ -3,24 +3,19 @@
    Display: Newsreader (serif, optical sizes). Body: Hanken Grotesk. */
 
 :root{
-  --paper:#fbfbfa;
-  --paper-2:#eef0f2;
-  --ink:#101419;
-  --ink-2:#454c55;
-  --ink-3:#7f8790;
-  --rule:#dfe2e6;
-  --accent:#d1452f;
+  color-scheme:dark;
+  --paper:#0f1216;
+  --paper-2:#191d23;
+  --ink:#eef0f2;
+  --ink-2:#b3b9c0;
+  --ink-3:#79818a;
+  --rule:#262b32;
+  --accent:#f07a62;
   --line-d:#d1452f; --line-l:#1f8a5b; --line-w:#2f6fd0; --line-c:#e8a913;
   --display:"Newsreader", "Iowan Old Style", Georgia, serif;
   --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
   --max:1180px;
   --gutter:clamp(20px,4vw,48px);
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --paper:#0f1216; --paper-2:#191d23; --ink:#eef0f2; --ink-2:#b3b9c0; --ink-3:#79818a;
-    --rule:#262b32; --accent:#f07a62; color-scheme:dark;
-  }
 }
 
 *{box-sizing:border-box}
@@ -214,6 +209,6 @@ dialog.lb button{position:fixed;top:18px;right:22px;background:none;border:1px s
 .feedside .note{color:var(--ink-2);min-height:5.2em;margin:0 0 24px;font-size:16px}
 .feedside .note b{display:block;font:400 24px/1.25 var(--display);color:var(--ink);margin-bottom:6px;font-weight:400}
 .hint{font-size:14px;color:var(--ink-3);margin:14px 0 0}
-@media (prefers-color-scheme:dark){.phone{border-color:#2b2c30}}
+.phone{border-color:#2b2c30}
 @media (max-width:860px){.feedwrap{grid-template-columns:1fr}.phone{position:static;margin:0 auto;height:640px}}
 @media (max-width:600px){.phone{height:580px}}
