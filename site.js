@@ -38,3 +38,20 @@ document.querySelectorAll('.yt[data-yt]').forEach(function (btn) {
   d.querySelector('button').addEventListener('click', function () { d.close(); });
   d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
 })();
+
+// Selected work: tap a title to expand its description (collapsed only on small screens via CSS).
+document.querySelectorAll('.work li').forEach(function (li) {
+  var h = li.querySelector('h3');
+  if (!h || h.querySelector('.wt')) return;
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'wt';
+  b.setAttribute('aria-expanded', 'false');
+  b.innerHTML = h.innerHTML;
+  h.innerHTML = '';
+  h.appendChild(b);
+  b.addEventListener('click', function () {
+    var open = li.classList.toggle('open');
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});

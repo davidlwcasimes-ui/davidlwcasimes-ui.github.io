@@ -212,3 +212,19 @@ dialog.lb button{position:fixed;top:18px;right:22px;background:none;border:1px s
 .phone{border-color:#2b2c30}
 @media (max-width:860px){.feedwrap{grid-template-columns:1fr}.phone{position:static;margin:0 auto;height:640px}}
 @media (max-width:600px){.phone{height:580px}}
+
+/* selected work: expandable on small screens */
+.wt{all:unset;font:inherit;color:inherit;line-height:inherit;cursor:text}
+@media (max-width:600px){
+  .work li{padding:0;gap:0}
+  .work .medium{display:none}
+  .wt{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;padding:18px 0;cursor:pointer;box-sizing:border-box}
+  .wt::after{content:"+";font:300 26px/1 var(--body);color:var(--accent);transition:transform .2s;flex:none}
+  .work li.open .wt::after{transform:rotate(45deg)}
+  .wt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .work h3{font-size:21px}
+  .work li:not(.open) p,.work li:not(.open) .tag{display:none}
+  .work li.open p{margin:0 0 10px}
+  .work li.open .tag{padding:0 0 18px}
+}
+@media (prefers-reduced-motion:reduce){.wt::after{transition:none}}
