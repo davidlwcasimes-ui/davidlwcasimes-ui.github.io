@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mast FL-21">
+<meta name="theme-color" content="#001D42">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>FL-21 Updates — Concept Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#001D42;--royal:#092E7B;--crimson:#A81C1C;--deep:#7A1212;--sky:#6BAFE6;--gold:#C9A24A;--ink:#0B1526;--paper:#F4F6F9;--line:#E2E6EC;--muted:#5C6677}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:Lato,system-ui,sans-serif;background:radial-gradient(circle at 50% 40%,#0d2a5c,#000c1d 75%);color:var(--ink);display:flex;align-items:center;justify-content:center;min-height:100vh}
+a{color:inherit;text-decoration:none}
+/* Phone frame on desktop, full-screen on phones */
+.stage{display:flex;gap:56px;align-items:center}
+.pitch{max-width:300px;color:#fff}
+.pitch .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gold);font-weight:700;margin-bottom:14px}
+.pitch h1{font-weight:900;font-size:38px;line-height:1.05;margin-bottom:16px}
+.pitch p{color:#c7d3e6;font-size:15px;line-height:1.5;margin-bottom:12px}
+.pitch ul{list-style:none;color:#c7d3e6;font-size:14px;line-height:1.5}
+.pitch li{padding:6px 0;border-top:1px solid rgba(255,255,255,.12)}
+.pitch li b{color:#fff}
+.phone{width:390px;height:812px;border-radius:52px;background:#000;padding:12px;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 2px #1f2a3d}
+.screen{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
+@media (max-width:760px){
+  body{display:block;background:var(--navy)}
+  .stage{display:block}.pitch{display:none}
+  .phone{width:100%;height:100vh;height:100dvh;border-radius:0;padding:0;box-shadow:none}
+  .screen{border-radius:0}
+}
+@media (display-mode: standalone){body{display:block;background:var(--navy)}.stage{display:block}.pitch{display:none}.phone{width:100%;height:100vh;height:100dvh;border-radius:0;padding:0;box-shadow:none}.screen{border-radius:0}.phone .demo{padding-top:max(8px,env(safe-area-inset-top))}.phone nav.tabs{padding-bottom:max(8px,env(safe-area-inset-bottom))}.sheet .bar{padding-top:max(12px,env(safe-area-inset-top))}}
+/* Top */
+.demo{background:var(--crimson);color:#fff;font-size:10px;font-weight:700;letter-spacing:.16em;text-align:center;padding:6px 8px;padding-top:max(6px,env(safe-area-inset-top))}
+.phone .demo{padding-top:34px}
+@media (max-width:760px){.phone .demo{padding-top:max(8px,env(safe-area-inset-top))}}
+header.top{background:var(--navy);color:#fff;padding:14px 20px 14px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.mark{width:34px;height:34px;border:1.5px solid rgba(255,255,255,.85);display:grid;place-items:center;font-weight:900;font-size:13px;letter-spacing:.02em}
+.brand .t1{font-weight:900;font-size:16px;line-height:1}
+.brand .t2{font-weight:300;font-size:10px;letter-spacing:.18em;opacity:.75;margin-top:4px}
+.bell{position:relative;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.08);cursor:pointer}
+.bell .dot{position:absolute;top:6px;right:7px;width:8px;height:8px;background:var(--crimson);border-radius:50%;border:2px solid var(--navy)}
+main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.view{display:none;padding-bottom:24px}.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Alert strip */
+.alert{margin:14px 16px 0;background:#fff;border-left:4px solid var(--crimson);padding:12px 14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.alert .lbl{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--crimson)}
+.alert .txt{font-weight:700;font-size:14px;line-height:1.3;margin-top:3px}
+/* Hero */
+.hero{position:relative;margin:14px 16px 0;height:260px;overflow:hidden;background:var(--navy) center/cover no-repeat;cursor:pointer;color:#fff}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,29,66,0) 25%,rgba(0,29,66,.92) 72%,#001D42)}
+.hero .in{position:absolute;left:16px;right:16px;bottom:16px;z-index:1}
+.badge{display:inline-block;background:var(--crimson);color:#fff;font-size:10px;font-weight:700;letter-spacing:.15em;padding:4px 8px;text-transform:uppercase}
+.hero h2{font-weight:900;font-size:24px;line-height:1.1;margin:10px 0 6px}
+.hero .sub{color:var(--sky);font-weight:700;font-size:13px}
+/* Sections */
+.sec{padding:22px 16px 0}
+.sech{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.sech h3{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--navy);text-transform:uppercase}
+.sech a{font-size:12px;font-weight:700;color:var(--crimson);cursor:pointer}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.q{background:var(--navy);color:#fff;padding:14px 10px;min-height:86px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
+.q:nth-child(1){background:var(--crimson)}
+.q svg{width:22px;height:22px}
+.q span{font-weight:700;font-size:12px;line-height:1.2}
+/* Cards */
+.card{display:flex;gap:12px;background:#fff;padding:10px;margin-bottom:8px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.card .img{flex:0 0 92px;height:78px;background:var(--royal) center/cover no-repeat}
+.card .meta{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.card .meta b{color:var(--crimson)}
+.card h4{font-weight:900;font-size:15px;line-height:1.2;margin-top:5px;color:var(--ink)}
+/* Filter chips */
+.chips{display:flex;gap:6px;overflow-x:auto;padding:16px 16px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1.5px solid var(--navy);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.1em;padding:7px 12px;text-transform:uppercase;cursor:pointer;background:transparent}
+.chip.on{background:var(--navy);color:#fff}
+.pageh{background:var(--navy);color:#fff;padding:20px 20px 22px}
+.pageh h2{font-weight:900;font-size:28px;line-height:1.05}
+.pageh p{color:var(--sky);font-weight:700;font-size:13px;margin-top:6px}
+/* Social */
+.sp{background:#fff;margin:12px 16px 0;padding:14px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.sp .who{display:flex;align-items:center;gap:10px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:13px}
+.sp .nm{font-weight:900;font-size:14px}
+.sp .hd{font-size:12px;color:var(--muted)}
+.plat{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--ink);padding:4px 7px}
+.plat.fb{background:#1A4FA0}.plat.ig{background:#8A2B6B}
+.sp .body{font-size:14px;line-height:1.45;margin:12px 0 10px}
+.sp .ph{height:180px;background:var(--royal) center/cover no-repeat;margin-bottom:10px}
+.sp .act{display:flex;gap:18px;font-size:12px;color:var(--muted);font-weight:700}
+.sample{font-size:9px;letter-spacing:.14em;color:var(--muted);font-weight:700;text-transform:uppercase;margin-top:8px}
+.follow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px 16px 0}
+.follow a{background:#fff;border:1.5px solid var(--line);padding:10px 6px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--navy)}
+/* Alerts */
+.al{background:#fff;margin:12px 16px 0;padding:14px;border-top:3px solid var(--navy)}
+.al.hot{border-top-color:var(--crimson)}
+.al .when{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.al h4{font-weight:900;font-size:16px;line-height:1.2;margin:6px 0}
+.al p{font-size:13px;line-height:1.45;color:#344055}
+.toggles{background:#fff;margin:16px 16px 0}
+.tg{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
+.sw{width:44px;height:26px;border-radius:13px;background:#cfd5de;position:relative;cursor:pointer;transition:.2s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.sw.on{background:var(--crimson)}.sw.on::after{left:21px}
+/* Help */
+.hl{display:flex;align-items:center;gap:14px;background:#fff;margin:8px 16px 0;padding:16px 14px;cursor:pointer}
+.hl .ic{width:40px;height:40px;background:var(--navy);color:#fff;display:grid;place-items:center;flex:0 0 40px}
+.hl .ic.r{background:var(--crimson)}
+.hl b{display:block;font-size:15px;font-weight:900}
+.hl small{font-size:12px;color:var(--muted)}
+.hl .ar{margin-left:auto;color:var(--crimson);font-weight:900}
+.cta{display:block;margin:20px 16px 0;background:var(--crimson);color:#fff;text-align:center;font-weight:700;font-size:12px;letter-spacing:.15em;padding:16px;text-transform:uppercase}
+.foot{margin:26px 16px 0;padding-top:12px;border-top:1px solid #d3d9e2;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.16em;color:var(--muted)}
+.foot b{color:var(--navy)}
+/* Tab bar */
+nav.tabs{display:flex;background:#fff;border-top:1px solid var(--line);padding:6px 4px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+.phone nav.tabs{padding-bottom:24px}
+@media (max-width:760px){.phone nav.tabs{padding-bottom:max(8px,env(safe-area-inset-bottom))}}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;font-weight:700;letter-spacing:.06em;color:#8a93a3;cursor:pointer;padding:4px 0;position:relative}
+.tab svg{width:22px;height:22px}
+.tab.on{color:var(--navy)}
+.tab.on::before{content:"";position:absolute;top:-7px;width:26px;height:3px;background:var(--crimson)}
+.tab .n{position:absolute;top:0;right:calc(50% - 18px);background:var(--crimson);color:#fff;font-size:9px;min-width:15px;height:15px;border-radius:8px;display:grid;place-items:center;padding:0 3px}
+/* Article sheet */
+.sheet{position:absolute;inset:0;background:var(--paper);transform:translateX(100%);transition:transform .3s ease;z-index:5;display:flex;flex-direction:column}
+.sheet.open{transform:none}
+.sheet .bar{background:var(--navy);color:#fff;display:flex;align-items:center;gap:10px;padding:12px 14px;padding-top:44px;font-weight:700;font-size:13px;letter-spacing:.1em}
+@media (max-width:760px){.sheet .bar{padding-top:max(12px,env(safe-area-inset-top))}}
+.sheet .bar button{background:none;border:0;color:#fff;font:inherit;font-size:22px;cursor:pointer;line-height:1}
+.sheet .scroll{flex:1;overflow-y:auto}
+.sheet .simg{height:240px;background:var(--navy) center/cover no-repeat}
+.sheet .sb{padding:20px}
+.sheet h2{font-weight:900;font-size:26px;line-height:1.1;margin:12px 0 8px}
+.sheet .date{font-size:11px;letter-spacing:.14em;color:var(--muted);font-weight:700;text-transform:uppercase}
+.sheet .note{background:#fff;border-left:4px solid var(--sky);padding:14px;font-size:14px;line-height:1.5;color:#344055;margin-top:16px}
+.share{display:flex;gap:8px;margin-top:16px}
+.share span{flex:1;text-align:center;border:1.5px solid var(--navy);padding:10px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--navy);cursor:pointer}
+.toast{position:absolute;left:50%;bottom:96px;transform:translate(-50%,20px);background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:10px 16px;opacity:0;transition:.25s;z-index:9;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="pitch">
+    <div class="eyebrow">CONCEPT · NOT AN OFFICIAL APP</div>
+    <h1>FL-21 in your pocket.</h1>
+    <p>One place for Treasure Coast residents to read the Congressman's updates, follow the office's social feeds, and get alerts when it matters — like the fall floods.</p>
+    <ul>
+      <li><b>Home</b> — top story, urgent alert, quick help</li>
+      <li><b>News</b> — blogs and press releases, filterable by issue</li>
+      <li><b>Social</b> — X, Facebook, Instagram in one feed</li>
+      <li><b>Alerts</b> — opt-in push by topic and county</li>
+      <li><b>Help</b> — casework, flood recovery, contact</li>
+    </ul>
+    <p style="margin-top:14px;font-size:12px;opacity:.7">Tap around the phone. On an actual phone, this page fills the screen — add it to your home screen to try it like an app.</p>
+  </div>
+
+  <div class="phone"><div class="screen" id="screen">
+    <div class="demo">CONCEPT DEMO · NOT AN OFFICIAL HOUSE APP</div>
+    <header class="top">
+      <div class="brand"><div class="mark">FL21</div><div><div class="t1">Rep. Brian Mast</div><div class="t2">FLORIDA'S 21ST</div></div></div>
+      <div class="bell" data-go="alerts"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="dot"></span></div>
+    </header>
+
+    <main id="main">
+      <!-- HOME -->
+      <section class="view on" id="v-home">
+        <div class="alert" data-go="alerts">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A81C1C" stroke-width="2.2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+          <div><div class="lbl">FLOOD RECOVERY</div><div class="txt">Mast asks the President to approve a Major Disaster Declaration.</div></div>
+        </div>
+        <div id="hero"></div>
+        <div class="sec">
+          <div class="sech"><h3>Get help</h3></div>
+          <div class="quick">
+            <a class="q" href="https://mast.house.gov/2026/11/09/flood-recovery-how-to-find-help/" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M12 3v5"/></svg><span>Flood recovery</span></a>
+            <a class="q" data-go="help"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg><span>Help with a federal agency</span></a>
+            <a class="q" data-go="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg><span>Get updates</span></a>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sech"><h3>Latest</h3><a data-go="news">See all →</a></div>
+          <div id="latest"></div>
+        </div>
+        <div class="foot"><b>MAST.HOUSE.GOV</b><span>REP. BRIAN MAST · FL-21</span></div>
+      </section>
+
+      <!-- NEWS -->
+      <section class="view" id="v-news">
+        <div class="pageh"><h2>News &amp; updates.</h2><p>Blogs and press releases from the office.</p></div>
+        <div class="chips" id="chips"></div>
+        <div class="sec" style="padding-top:10px"><div id="newslist"></div></div>
+      </section>
+
+      <!-- SOCIAL -->
+      <section class="view" id="v-social">
+        <div class="pageh"><h2>Social.</h2><p>Every channel, one feed.</p></div>
+        <div class="follow">
+          <a href="https://x.com/RepBrianMast" target="_blank">X</a>
+          <a href="https://www.facebook.com/RepBrianMast" target="_blank">FACEBOOK</a>
+          <a href="https://www.instagram.com/repbrianmast" target="_blank">INSTAGRAM</a>
+        </div>
+        <div id="social"></div>
+        <p class="sample" style="padding:14px 16px 0">Sample posts built from recent mast.house.gov headlines. A real version would pull each platform's live feed.</p>
+      </section>
+
+      <!-- ALERTS -->
+      <section class="view" id="v-alerts">
+        <div class="pageh"><h2>Alerts.</h2><p>Only what matters, only when it matters.</p></div>
+        <div class="al hot"><div class="when">Nov 17 · Flood recovery</div><h4>More rain forecasted. Mast asks the President to approve a Major Disaster Declaration.</h4><p>Tap for the full release and what it means for Martin, St. Lucie and Palm Beach Counties.</p></div>
+        <div class="al hot"><div class="when">Nov 18 · Safety</div><h4>Stay prepared ahead of severe weather.</h4><p>What to have ready before the next round of storms.</p></div>
+        <div class="al"><div class="when">Nov 3 · Election Day</div><h4>Flooding has moved some polling places.</h4><p>Check your polling location before you go.</p></div>
+        <div class="sec"><div class="sech"><h3>Notify me about</h3></div></div>
+        <div class="toggles" id="toggles"></div>
+        <div class="sec"><div class="sech"><h3>My county</h3></div></div>
+        <div class="chips" id="counties" style="padding-top:0"></div>
+      </section>
+
+      <!-- HELP -->
+      <section class="view" id="v-help">
+        <div class="pageh"><h2>How can we help?</h2><p>The office works for you — here's where to start.</p></div>
+        <a class="hl" href="https://mast.house.gov/2026/11/09/flood-recovery-how-to-find-help/" target="_blank"><div class="ic r">≈</div><div><b>Flood recovery</b><small>Assistance, insurance, and county resources</small></div><span class="ar">→</span></a>
+        <a class="hl" href="https://mast.house.gov" target="_blank"><div class="ic">★</div><div><b>Help with a federal agency</b><small>VA, Social Security, IRS, passports and more</small></div><span class="ar">→</span></a>
+        <a class="hl" href="https://mast.house.gov" target="_blank"><div class="ic">✉</div><div><b>Share your opinion</b><small>Write to the Congressman on an issue</small></div><span class="ar">→</span></a>
+        <a class="hl" href="https://mast.house.gov" target="_blank"><div class="ic">⚑</div><div><b>Plan a D.C. visit</b><small>Capitol tours and flag requests</small></div><span class="ar">→</span></a>
+        <a class="hl" href="https://mast.house.gov" target="_blank"><div class="ic">⌂</div><div><b>Office locations</b><small>Washington and the Treasure Coast</small></div><span class="ar">→</span></a>
+        <a class="cta" href="https://mast.house.gov" target="_blank">Contact the office →</a>
+        <div class="foot"><b>MAST.HOUSE.GOV</b><span>REP. BRIAN MAST · FL-21</span></div>
+      </section>
+    </main>
+
+    <nav class="tabs" id="tabs">
+      <div class="tab on" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5V21H3z"/></svg>Home</div>
+      <div class="tab" data-go="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>News</div>
+      <div class="tab" data-go="social"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.5A8 8 0 1 1 21 12z"/></svg>Social</div>
+      <div class="tab" data-go="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Alerts<span class="n">2</span></div>
+      <div class="tab" data-go="help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01"/></svg>Help</div>
+    </nav>
+
+    <div class="sheet" id="sheet">
+      <div class="bar"><button id="back">‹</button><span>MAST.HOUSE.GOV</span></div>
+      <div class="scroll">
+        <div class="simg" id="s-img"></div>
+        <div class="sb">
+          <span class="badge" id="s-cat"></span>
+          <h2 id="s-title"></h2>
+          <div class="date" id="s-date"></div>
+          <div class="note">In the app, the full post would load right here — text, photos and video — pulled straight from WordPress, so nothing has to be posted twice.</div>
+          <a class="cta" id="s-link" target="_blank" style="margin:16px 0 0">Read on mast.house.gov →</a>
+          <div class="share"><span data-toast="Link copied">Copy link</span><span data-toast="Saved for later">Save</span><span data-toast="Share sheet opens here">Share</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div></div>
+</div>
+
+<script>
+const U='https://mast.house.gov/wp-content/uploads/';
+const posts=[
+ {t:"Stay prepared ahead of severe weather",d:"Nov 18, 2026",c:["Blog","Safety"],u:"2026/11/18/stay-prepared-ahead-of-severe-weather/",i:"2026/11/DSC00942.jpeg"},
+ {t:"With more rain forecasted, Mast asks President to approve Major Disaster Declaration",d:"Nov 17, 2026",c:["Press Releases"],u:"2026/11/17/with-more-rain-forecasted-mast-asks-president-to-approve-major-disaster-declaration/",i:"2026/07/2025-TOWN-HALLS-2823.jpg"},
+ {t:"Aaron Vaughn's name belongs in Hobe Sound",d:"Nov 16, 2026",c:["Blog","Defense","Veterans"],u:"2026/11/16/aaron-vaughns-name-belongs-in-hobe-sound/",i:"2026/11/vaughn_thumbnail_v2.jpg"},
+ {t:"Mast leads Florida delegation urging President to approve disaster declaration after historic flooding",d:"Nov 12, 2026",c:["Press Releases"],u:"2026/11/12/mast-leads-florida-delegation-urging-president-to-approve-disaster-declaration-after-historic-flooding/",i:"2026/07/2025-TOWN-HALLS-2823.jpg"},
+ {t:"Thank you, vets!",d:"Nov 11, 2026",c:["Blog","Veterans"],u:"2026/11/11/thank-you-vets/",i:"2026/07/f-7-f7716c8c-472d-41a6-bc84-09a8f901f6d2-3b84550d5a8003076d674fb7fe1741667878c17db33cf6829f0174865bc6eec4-sav4241-photogallery.jpg"},
+ {t:"Flood Recovery: How to find help",d:"Nov 9, 2026",c:["Blog"],u:"2026/11/09/flood-recovery-how-to-find-help/",i:"2026/11/flood-recovery-share-1200x630-1.jpg"},
+ {t:"Election Day: Flooding has moved some polling places",d:"Nov 3, 2026",c:["Blog"],u:"2026/11/03/election-day-flooding-has-moved-some-polling-places/",i:"2026/11/Untitled-Design-1-400x250.png"},
+ {t:"When the lagoon's healthy, we're healthy",d:"Oct 27, 2026",c:["Blog","Environment"],u:"2026/10/27/when-the-lagoons-healthy-were-healthy/",i:"2026/10/DSC09796.jpg"},
+ {t:"Wins for Florida",d:"Oct 26, 2026",c:["Blog","Tax"],u:"2026/10/26/wins-for-florida/",i:"2026/10/DSC08075.jpg"}
+];
+const $=s=>document.querySelector(s);
+const bg=p=>`background-image:url('${U+p.i}')`;
+const cat=p=>p.c[p.c.length>1?1:0];
+const card=(p,k)=>`<div class="card" data-post="${k}"><div class="img" style="${bg(p)}"></div><div><div class="meta"><b>${cat(p)}</b> · ${p.d.replace(', 2026','')}</div><h4>${p.t}</h4></div></div>`;
+
+// Home
+const lead=posts[5];
+$('#hero').innerHTML=`<div class="hero" data-post="5" style="${bg(lead)}"><div class="in"><span class="badge">Top story</span><h2>${lead.t}.</h2><div class="sub">Resources for Martin, St. Lucie and Palm Beach Counties.</div></div></div>`;
+$('#latest').innerHTML=[0,2,4].map(k=>card(posts[k],k)).join('');
+
+// News + filters
+const cats=["All","Blog","Press Releases","Safety","Veterans","Environment","Defense","Tax"];
+let cur="All";
+function renderNews(){
+  $('#chips').innerHTML=cats.map(c=>`<button class="chip${c===cur?' on':''}" data-cat="${c}">${c}</button>`).join('');
+  $('#newslist').innerHTML=posts.map((p,k)=>[p,k]).filter(([p])=>cur==="All"||p.c.includes(cur)).map(([p,k])=>card(p,k)).join('');
+}
+renderNews();
+
+// Social (sample)
+const soc=[
+ {pl:"X",cls:"",k:1,b:"More rain is on the way. I'm asking the President to approve a Major Disaster Declaration for the Treasure Coast — our families can't wait.",ph:false},
+ {pl:"FACEBOOK",cls:"fb",k:5,b:"If your home or business was hit by the floods, here's where to find help — FEMA, SBA, insurance deadlines and county resources, all in one place.",ph:true},
+ {pl:"INSTAGRAM",cls:"ig",k:4,b:"Thank you, vets. 🇺🇸",ph:true},
+ {pl:"X",cls:"",k:7,b:"When the lagoon's healthy, we're healthy.",ph:false}
+];
+$('#social').innerHTML=soc.map(s=>`<div class="sp" data-post="${s.k}"><div class="who"><div class="av">BM</div><div><div class="nm">Rep. Brian Mast</div><div class="hd">@RepBrianMast · ${posts[s.k].d.replace(', 2026','')}</div></div><span class="plat ${s.cls}">${s.pl}</span></div><div class="body">${s.b}</div>${s.ph?`<div class="ph" style="${bg(posts[s.k])}"></div>`:''}<div class="act"><span>♡ Like</span><span>↻ Share</span><span>→ Open post</span></div><div class="sample">Sample post · concept</div></div>`).join('');
+
+// Alerts toggles + county
+const tg=[["Flooding & emergencies",1],["Water & Lake O",1],["Veterans",0],["Town halls & events",1],["Weekly newsletter",0]];
+$('#toggles').innerHTML=tg.map(([n,o])=>`<div class="tg">${n}<div class="sw${o?' on':''}"></div></div>`).join('');
+const cs=["Martin","St. Lucie","Palm Beach"];
+$('#counties').innerHTML=cs.map((c,i)=>`<button class="chip${i===0?' on':''}" data-county>${c}</button>`).join('');
+
+// Routing
+function go(v){
+  document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));
+  document.querySelectorAll('.tab').forEach(e=>e.classList.toggle('on',e.dataset.go===v));
+  $('#main').scrollTop=0;$('#sheet').classList.remove('open');
+}
+function openPost(k){
+  const p=posts[k];
+  $('#s-img').style.backgroundImage=`url('${U+p.i}')`;
+  $('#s-cat').textContent=cat(p);$('#s-title').textContent=p.t;$('#s-date').textContent=p.d;
+  $('#s-link').href='https://mast.house.gov/'+p.u;
+  $('#sheet .scroll').scrollTop=0;$('#sheet').classList.add('open');
+}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1400)}
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]'); if(g&&!g.href){go(g.dataset.go);return}
+  const p=e.target.closest('[data-post]'); if(p){openPost(+p.dataset.post);return}
+  const c=e.target.closest('[data-cat]'); if(c){cur=c.dataset.cat;renderNews();return}
+  const s=e.target.closest('.sw'); if(s){s.classList.toggle('on');toast(s.classList.contains('on')?'Alerts on':'Alerts off');return}
+  const co=e.target.closest('[data-county]'); if(co){document.querySelectorAll('[data-county]').forEach(x=>x.classList.toggle('on',x===co));toast(co.textContent+' County selected');return}
+  const t=e.target.closest('[data-toast]'); if(t){toast(t.dataset.toast);return}
+});
+$('#back').onclick=()=>$('#sheet').classList.remove('open');
+</script>
+</body>
+</html>
