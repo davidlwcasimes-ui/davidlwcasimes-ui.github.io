@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="David L.W. Casimes">
 <meta property="og:title" content="David L.W. Casimes">
-<meta property="og:description" content="Digital communications and press at the U.S. House of Representatives">
+<meta property="og:description" content="Capitol Hill communicator: photography, video, design and writing for Congressman Brian Mast (FL-21).">
 <meta property="og:url" content="https://davidlwcasimes-ui.github.io/">
 <meta property="og:image" content="https://davidlwcasimes-ui.github.io/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23d1452f'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Georgia,serif' font-size='16' fill='%23ffffff'%3ED%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -40,8 +40,14 @@
 </header>
 
 <section class="hero" style="border-top:0">
-  <h1>David L.W. Casimes</h1>
-  <p class="lede">Digital communications and press at the U.S. House of Representatives</p>
+  <div class="hero-text">
+    <h1>David L.W. Casimes</h1>
+    <p class="lede">Capitol Hill communicator. I shoot, cut, design and write for Congressman Brian Mast and Florida&rsquo;s Treasure Coast.</p>
+  </div>
+  <!-- Portrait: add img/headshot.jpg (portrait crop, about 4:5) and it appears here. Until then it stays hidden. -->
+  <figure class="portrait" hidden>
+    <img src="img/headshot.jpg" alt="David L.W. Casimes" onload="this.parentElement.hidden=false" onerror="this.parentElement.remove()">
+  </figure>
 </section>
 
 <section id="photo" aria-labelledby="photo-h">
@@ -240,52 +246,48 @@
   </div>
 </section>
 
-<section id="video" aria-labelledby="video-h">
-  <div class="sec-head">
-    <h2 id="video-h">Videos</h2>
+<section id="video" class="band" aria-labelledby="video-h">
+  <div class="band-in">
+    <div class="sec-head">
+      <h2 id="video-h">Videos</h2>
+      <p>I shoot these from a helicopter over the district and cut them in Premiere.</p>
+    </div>
+    <div class="videos" id="videos"></div>
   </div>
-  <div class="videos" id="videos"></div>
 </section>
 
 <section id="work" aria-labelledby="work-h">
   <div class="sec-head">
-    <h2 id="work-h">Selected work</h2>
+    <h2 id="work-h">Current projects</h2>
   </div>
   <ul class="work">
     <li>
-      <span class="medium">Email</span>
-      <div><h3>The office's email program</h3>
-        <p>Write, design and schedule the office newsletter and outreach, from the weekly newsletter to same-day issue alerts, and move each send through review and approval.</p></div>
-      <span class="tag">Weekly</span>
+      <h3>The office&rsquo;s email program</h3>
+      <p>I write, design and schedule the newsletter and every outreach send, from the weekly issue to same-day alerts, and walk each one through review and approval.</p>
     </li>
     <li>
-      <span class="medium">Video</span>
-      <div><h3>Week in Review &amp; event video</h3>
-        <p>Script and produce the Congressman's weekly Week in Review, plus event photo and video, for YouTube and the e-list with a companion blog.</p></div>
-      <span class="tag">Weekly</span>
+      <h3>Week in Review &amp; event video</h3>
+      <p>I script and produce the Congressman&rsquo;s weekly Week in Review and cover events in photo and video for YouTube, the e-list and a companion blog.</p>
+      <a class="go" href="#video">Watch the videos</a>
     </li>
     <li>
-      <span class="medium">Social</span>
-      <div><h3>Daily content &amp; rapid response</h3>
-        <p>Daily posting across X, Instagram, Facebook and YouTube: content calendar, real-time coverage, community engagement and rapid response.</p></div>
-      <span class="tag">Daily</span>
+      <h3>Daily social &amp; rapid response</h3>
+      <p>I post daily across X, Instagram, Facebook and YouTube: I plan the content calendar, cover events live, reply to constituents and respond the same day when news breaks.</p>
+      <a class="go" href="#graphics">See the graphics</a>
     </li>
     <li>
-      <span class="medium">Web</span>
-      <div><h3>Replatforming mast.house.gov</h3>
-        <p>Led the redesign and migration to WordPress from scoping through launch. I wrote the requirements for the vendor work order, designed the interior page system, briefed the communications team and shipped the new site.</p></div>
-      <span class="tag">Launched 2026</span>
+      <h3>Rebuilding mast.house.gov</h3>
+      <p>I lead the move to WordPress from scoping through launch: I write the requirements for the vendor work order, design the interior page system, brief the communications team and ship the new site.</p>
+      <a class="go" href="https://mast.house.gov" target="_blank" rel="noopener">Visit the site</a>
     </li>
     <li>
-      <span class="medium">Writing</span>
-      <div><h3>Speeches, op-eds &amp; the Everglades Summit</h3>
-        <p>The Congressman's scripts, speeches, press releases, blogs, op-eds and talking points, from a Miami Herald op-ed to his International Mine Awareness Day and commencement remarks. Coordinated the America's Everglades Summit at the Capitol Visitor Center.</p></div>
-      <span class="tag">Principal-side</span>
+      <h3>Speeches, op-eds &amp; the Everglades Summit</h3>
+      <p>I write the Congressman&rsquo;s scripts, speeches, press releases, blogs, op-eds and talking points, from a Miami Herald op-ed to International Mine Awareness Day and commencement remarks. I also coordinate the America&rsquo;s Everglades Summit at the Capitol Visitor Center.</p>
     </li>
   </ul>
 </section>
 
-<section id="recognition" aria-labelledby="rec-h">
+<section id="recognition" class="flush" aria-labelledby="rec-h">
   <figure class="quote">
     <h2 id="rec-h">Recognition</h2>
     <div>
@@ -295,17 +297,6 @@
   </figure>
 </section>
 
-<section id="toolkit" aria-labelledby="kit-h">
-  <div class="sec-head">
-    <h2 id="kit-h">Skills</h2>
-  </div>
-  <div class="kit">
-    <div><h3>Video &amp; motion</h3><ul><li>Adobe Premiere</li><li>After Effects</li><li>Frame.io</li></ul></div>
-    <div><h3>Design</h3><ul><li>Illustrator, Photoshop</li><li>Canva, Figma</li><li>Photography</li></ul></div>
-    <div><h3>Web</h3><ul><li>WordPress &amp; Divi</li><li>HTML, CSS, JavaScript</li><li>GitHub Pages</li></ul></div>
-    <div><h3>Outreach</h3><ul><li>Intranet Quorum (IQ)</li><li>Email marketing</li><li>AP style, rapid response</li></ul></div>
-  </div>
-</section>
 
 <section id="contact" aria-labelledby="contact-h">
   <div class="contact">
